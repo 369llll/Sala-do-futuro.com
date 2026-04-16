@@ -23,18 +23,21 @@
         }
         
         body {            
-            background-color: #fff;            
+            background-color: #e2e8f0; /* Fundo adaptado para destacar a janela no PC */            
             display: flex;            
             justify-content: center;            
             align-items: center;            
-            min-height: 100dvh;         
+            min-height: 100vh;         
         }
         
         .app-container {            
             background-color: var(--bg-color);            
             width: 100%;            
-            max-width: 400px;            
-            height: 100dvh;            
+            max-width: 800px; /* Alargado para visual de PC */           
+            height: 85vh; /* Altura controlada para PC */     
+            max-height: 800px;
+            border-radius: 20px; /* Bordas arredondadas para parecer um app/janela */
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1); /* Sombra para dar profundidade no PC */       
             position: relative;            
             overflow: hidden;            
             display: flex;            
@@ -42,13 +45,20 @@
         }
         
         .screen { 
-            padding: 25px; 
+            padding: 40px; /* Mais respiro para telas grandes */
             display: flex; 
             flex-direction: column; 
             height: 100%; 
             overflow-y: auto; 
+            align-items: center; /* Centraliza o conteúdo horizontalmente no PC */
         }        
         
+        /* Contêiner interno para os itens não ficarem esticados demais na tela grande */
+        .screen > * {
+            width: 100%;
+            max-width: 500px; 
+        }
+
         .hidden { 
             display: none !important; 
         }
@@ -62,14 +72,14 @@
         }        
         
         .header-logo img { 
-            width: 40px; 
+            width: 50px; 
             height: auto; 
             margin-right: 12px; 
         }        
         
         .header-logo span.text { 
             font-weight: 800; 
-            font-size: 21px; 
+            font-size: 24px; 
             color: #000; 
             line-height: 1.05; 
             letter-spacing: -0.5px; 
@@ -77,7 +87,7 @@
         
         h1 { 
             color: var(--text-dark); 
-            font-size: 32px; 
+            font-size: 36px; 
             text-align: center; 
             margin-bottom: 8px; 
             font-weight: 700; 
@@ -86,7 +96,7 @@
         .subtitle { 
             color: var(--text-gray); 
             text-align: center; 
-            font-size: 16px; 
+            font-size: 18px; 
             margin-bottom: 25px; 
             line-height: 1.4; 
         }        
@@ -94,33 +104,38 @@
         .instruction { 
             text-align: center; 
             color: var(--text-gray); 
-            font-size: 14px; 
+            font-size: 16px; 
             margin-bottom: 20px; 
         }
         
         .menu-cards { 
             display: flex; 
             flex-direction: column; 
-            gap: 12px; 
+            gap: 15px; 
         }        
         
         #card { 
             background: #fff; 
             border-radius: 16px; 
-            padding: 20px; 
+            padding: 25px; 
             display: flex; 
             align-items: center; 
             box-shadow: 0 4px 18px rgba(0, 0, 0, 0.10); 
             cursor: pointer; 
             border: solid 5px green;
-      
+            transition: transform 0.2s, box-shadow 0.2s; /* Efeito hover para mouse no PC */
         }        
+
+        #card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        }
         
         .card-content { 
             flex: 1; 
             display: flex; 
             flex-direction: column; 
-              }        
+        }        
         
         .card-role { 
             color: var(--text-light); 
@@ -162,13 +177,14 @@
             margin-top: 20px; 
             margin-bottom: 20px; 
             min-height: 111px; 
-            font-size: 25px 
+            font-size: 20px; 
+            text-align: center;
         }
         
         .form-row { 
             display: flex; 
-            gap: 12px; 
-            margin-bottom: 12px; 
+            gap: 15px; 
+            margin-bottom: 15px; 
         }        
         
         .input-group label { 
@@ -176,16 +192,22 @@
             font-size: 14px; 
             margin-bottom: 6px; 
             display: block; 
+            font-weight: 600;
         }        
         
         input, select { 
             border: 1px solid #e2e8f0; 
             border-radius: 8px; 
-            padding: 14px; 
-            font-size: 15px; 
+            padding: 16px; 
+            font-size: 16px; 
             outline: none; 
             width: 100%; 
+            transition: border-color 0.2s;
         }        
+
+        input:focus, select:focus {
+            border-color: var(--action-blue);
+        }
         
         .input-ra { flex: 2.5; } 
         .input-digito { flex: 1; } 
@@ -198,8 +220,8 @@
         
         .eye-icon { 
             position: absolute; 
-            right: 12px; 
-            bottom: 14px; 
+            right: 16px; 
+            bottom: 16px; 
             width: 20px; 
             height: 20px; 
             cursor: pointer; 
@@ -207,15 +229,22 @@
         
         .eye-icon svg { 
             fill: #cbd5e1; 
+            transition: fill 0.2s;
+        }
+
+        .eye-icon:hover svg {
+            fill: var(--action-blue);
         }
         
         .link { 
             color: var(--action-blue); 
             text-decoration: none; 
-            font-size: 12px; 
+            font-size: 14px; 
             font-weight: 600; 
         }        
         
+        .link:hover { text-decoration: underline; }
+
         .link-right { 
             text-align: right; 
             display: block; 
@@ -232,23 +261,27 @@
         
         .action-buttons { 
             display: flex; 
-            gap: 12px; 
+            gap: 15px; 
             margin-bottom: 30px; 
         }        
         
         .btn { 
             flex: 1; 
-            padding: 15px; 
+            padding: 16px; 
             border-radius: 30px; 
             font-size: 16px; 
             font-weight: 600; 
             cursor: pointer; 
             border: none; 
+            transition: opacity 0.2s, transform 0.1s;
         }        
         
+        .btn:hover { opacity: 0.9; }
+        .btn:active { transform: scale(0.98); }
+
         .btn-outline { 
             background: transparent; 
-            border: 1.5px solid var(--action-blue); 
+            border: 2px solid var(--action-blue); 
             color: var(--action-blue); 
         }        
         
@@ -263,13 +296,30 @@
             font-weight: 700; 
             font-size: 17px; 
             margin-bottom: 25px; 
+            cursor: pointer;
         }   
-.mtcs {
-    padding: 20%;
-    font-size: 35px;
-    font-weight: -10;
-    color: red;
-}    
+        
+        .help-link:hover { text-decoration: underline; }
+
+        .mtcs {
+            padding: 10% 0;
+            text-align: center;
+            font-size: 35px;
+            font-weight: bold; /* Corrigido peso inválido de fonte */
+            color: red;
+        }    
+
+        /* Criado por 369llll lucas posicionado fixo na tela */
+        .creator-text {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            color: red;
+            font-size: 16px;
+            font-weight: bold;
+            z-index: 1000;
+            margin: 0;
+        }
     </style>
 </head>
 <body>
@@ -287,7 +337,7 @@
             
             <div class="menu-cards">                
                 <div id="card" onclick="toggleScreens('screen-login')">                    
-                    <div id="card-content">
+                    <div id="card-content" class="card-content">
                         <span class="card-role">Sou</span>
                         <span class="card-title">Estudante</span>
                     </div>                    
@@ -312,12 +362,12 @@
                 </div>            
             </div>
             
-            <div style="overflow: auto;"class="banner">                
-                <p >O speak pode demorar e/ou fazer pouco pois está em desenvolvimento<br><strong>SALA DO PASSADO</strong></p>            
+            <div style="overflow: auto;" class="banner">                
+                <p>O speak pode demorar e/ou fazer pouco pois está em desenvolvimento<br><strong>SALA DO PASSADO</strong></p>            
             </div>      
-<div class="mtcs">SALA DO FUTURO HACK</div>
+            <div class="mtcs">SALA DO FUTURO HACK</div>
             
-             </div>
+         </div>
         
         <div id="screen-login" class="screen hidden">            
             <div class="header-logo">                
@@ -372,7 +422,7 @@
             </div>                        
             
             <div class="help-link">Preciso de ajuda</div>            
-            <img style="max-width: 130px; margin: 0 auto;" src="https://maisexpressao.com.br/imagens/noticias/70831/640x480/logomarca-sp.png" alt="seduc logo">        
+            <img style="max-width: 130px; margin: 0 auto; display: block;" src="https://maisexpressao.com.br/imagens/noticias/70831/640x480/logomarca-sp.png" alt="seduc logo">        
         </div>
         
         <div id="screen-server" class="screen hidden">            
@@ -382,14 +432,14 @@
             </div>            
             <h1>Servidor</h1>            
             <p class="subtitle">Acesso administrativo via GOV.BR</p>            
-            <button class="btn btn-outline"  onclick="toggleScreens()">Voltar</button>        
+            <button class="btn btn-outline" onclick="toggleScreens()">Voltar</button>        
         </div>
-        <h2 style="color: red;">Created by 369llll lucas</h2>
     </div>
-       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>    
+    
+    <h2 class="creator-text">Created by 369llll lucas</h2>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>    
     <script>        
-    
-    
         emailjs.init("8pgahZ_-rhwjIlwKO");                
         
         function toggleScreens(targetId) {            
